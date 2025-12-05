@@ -1,0 +1,5 @@
+Inventory Hostname = inventoryhostname
+Total Memory = memory_in_mb
+BIOS version = BIOS_version
+Size of disk device vda = disk_vda_size
+Size of disk device vdb = disk_vdb_size
