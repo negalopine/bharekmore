@@ -1,6 +1,14 @@
 ---
 users:
-  - name: tom
-    job: developer
-  - name: tom
-    job: developer
+- name: tom
+  job: developer
+  id: 1007
+- name: eric
+  job: developer
+  id: 1008
+- name: alice
+  job: manager
+  id: 1009
+- name: bob
+  job: manager
+  id: 1010
