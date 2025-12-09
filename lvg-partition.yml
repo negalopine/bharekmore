@@ -1,0 +1,29 @@
+--- 
+- name: Create partition and vg
+  hosts: dev,test,prod
+  tasks:
+	  - name: Create a new primary partition for LVM
+	    community.general.parted:
+		    device: /dev/vdb
+		    number: 1
+		    flags: lvm
+		    state: present
+		    part_start: 1MiB
+		    part_end: 750MiB
+	    when: "'dev' in group_names" or inventory_hostname in groups['test']
+	  
+	  - name: Create a new primary partition for LVM-1
+	    community.general.parted:
+		    device: /dev/vdb
+		    number: 1
+		    flags: lvm
+		    state: present
+		    part_start: 1MiB
+		    part_end: 500MiB
+	    when: inventory_hostname in group_names['prod']
+	  
+	  - name: create a volume group
+	    community.general.lvg:
+		    vg: research
+		    pvs: /dev/vdb1
+		ignore_errors: yes
